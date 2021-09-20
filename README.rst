@@ -36,18 +36,13 @@ This is easily achieved by downloading
 or individual libraries can be installed using
 `circup <https://github.com/adafruit/circup>`_.
 
-.. todo:: Describe the Adafruit product this library works with. For PCBs, you can also add the
-image from the assets folder in the PCB's GitHub repo.
+Adafruit 2.9" Flexible 296x128 Monochrome eInk / ePaper Display
 
 `Purchase one from the Adafruit shop <http://www.adafruit.com/products/4262>`_
 
 
 Installing from PyPI
 =====================
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
-
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
 
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
 PyPI <https://pypi.org/project/adafruit-circuitpython-uc8151d/>`_.
@@ -100,8 +95,44 @@ Or the following command to update an existing version:
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the
-examples folder and be included in docs/examples.rst.
+.. code-block:: python
+
+    import time
+    import board
+    import displayio
+    import adafruit_uc8151d
+
+    displayio.release_displays()
+
+    # This pinout works on a Feather M4 and may need to be altered for other boards.
+    spi = board.SPI()  # Uses SCK and MOSI
+    epd_cs = board.D9
+    epd_dc = board.D10
+    epd_reset = board.D5
+    epd_busy = None
+
+    display_bus = displayio.FourWire(
+        spi, command=epd_dc, chip_select=epd_cs, reset=epd_reset, baudrate=1000000
+    )
+    time.sleep(1)
+
+    display = adafruit_uc8151d.UC8151D(
+        display_bus, width=296, height=128, rotation=90, busy_pin=epd_busy
+    )
+
+    g = displayio.Group()
+
+    with open("/display-ruler.bmp", "rb") as f:
+        pic = displayio.OnDiskBitmap(f)
+        t = displayio.TileGrid(pic, pixel_shader=pic.pixel_shader)
+        g.append(t)
+
+        display.show(g)
+
+        display.refresh()
+
+        time.sleep(120)
+
 
 Contributing
 ============

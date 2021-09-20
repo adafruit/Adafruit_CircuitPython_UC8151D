@@ -24,14 +24,12 @@ Table of Contents
 .. toctree::
     :caption: Tutorials
 
-.. todo:: Add any Learn guide links here. If there are none, then simply delete this todo and leave
-    the toctree above for use later.
+Adafruit 2.9" eInk Display Breakouts and FeatherWings <https://learn.adafruit.com/adafruit-2-9-eink-display-breakouts-and-featherwings>
 
 .. toctree::
     :caption: Related Products
 
-.. todo:: Add any product links here. If there are none, then simply delete this todo and leave
-    the toctree above for use later.
+Adafruit 2.9" Flexible 296x128 Monochrome eInk / ePaper Display <https://www.adafruit.com/product/4262>
 
 .. toctree::
     :caption: Other Links
