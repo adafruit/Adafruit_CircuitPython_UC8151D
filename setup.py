@@ -54,7 +54,7 @@ setup(
     ],
     # What does your project relate to?
     keywords="adafruit blinka circuitpython micropython uc8151d uc8151 us8151d displayio epd "
-             "epaper flexible",
+    "epaper flexible",
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
     # TODO: IF LIBRARY FILES ARE A PACKAGE FOLDER,
