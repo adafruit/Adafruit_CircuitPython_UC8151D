@@ -9,6 +9,7 @@ Supported products:
   * Adafruit Flexible 2.9" Monochrome
     * https://www.adafruit.com/product/4262
   """
+# pylint: disable=no-member
 
 import time
 import board
@@ -37,9 +38,7 @@ g = displayio.Group()
 
 with open("/display-ruler.bmp", "rb") as f:
     pic = displayio.OnDiskBitmap(f)
-    t = displayio.TileGrid(
-        pic, pixel_shader=pic.pixel_shader
-    )  # pylint: disable=no-member
+    t = displayio.TileGrid(pic, pixel_shader=pic.pixel_shader)
     g.append(t)
 
     display.show(g)
