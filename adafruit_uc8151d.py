@@ -31,18 +31,14 @@ __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_UC8151D.git"
 
 _START_SEQUENCE = (
-    #b"\x01\x05\x03\x00\x2b\x2b\x09"  # power setting
-    #b"\x06\x03\x17\x17\x17"  # booster soft start
-
+    # b"\x01\x05\x03\x00\x2b\x2b\x09"  # power setting
+    # b"\x06\x03\x17\x17\x17"  # booster soft start
     b"\x04\x80\xc8"  # power on and wait 10 ms
     b"\x00\x01\x1f"  # panel setting. Further filled in below.
     b"\x50\x01\x97"  # CDI setting
 )
 
-_STOP_SEQUENCE = (
-    b"\x50\x01\xf7"  # CDI setting
-    b"\x07\x01\xA5"  # Deep Sleep
-)
+_STOP_SEQUENCE = b"\x50\x01\xf7" b"\x07\x01\xA5"  # CDI setting  # Deep Sleep
 # pylint: disable=too-few-public-methods
 class UC8151D(displayio.EPaperDisplay):
     r"""UC8151D driver

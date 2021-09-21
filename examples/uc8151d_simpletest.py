@@ -9,6 +9,7 @@ Supported products:
   * Adafruit Flexible 2.9" Monochrome
     * https://www.adafruit.com/product/4262
   """
+# pylint: disable=no-member
 
 import time
 import board
