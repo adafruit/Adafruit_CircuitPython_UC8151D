@@ -3,7 +3,7 @@ Introduction
 
 
 .. image:: https://readthedocs.org/projects/adafruit-circuitpython-uc8151d/badge/?version=latest
-    :target: https://circuitpython.readthedocs.io/projects/uc8151d/en/latest/
+    :target: https://docs.circuitpython.org/projects/uc8151d/en/latest/
     :alt: Documentation Status
 
 
@@ -137,7 +137,7 @@ Usage Example
 Documentation
 =============
 
-API documentation for this library can be found on `Read the Docs <https://circuitpython.readthedocs.io/projects/uc8151d/en/latest/>`_.
+API documentation for this library can be found on `Read the Docs <https://docs.circuitpython.org/projects/uc8151d/en/latest/>`_.
 
 Contributing
 ============

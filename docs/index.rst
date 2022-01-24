@@ -35,7 +35,7 @@ Adafruit 2.9" Flexible 296x128 Monochrome eInk / ePaper Display <https://www.ada
     :caption: Other Links
 
     Download <https://github.com/adafruit/Adafruit_CircuitPython_UC8151D/releases/latest>
-    CircuitPython Reference Documentation <https://circuitpython.readthedocs.io>
+    CircuitPython Reference Documentation <https://docs.circuitpython.org>
     CircuitPython Support Forum <https://forums.adafruit.com/viewforum.php?f=60>
     Discord Chat <https://adafru.it/discord>
     Adafruit Learning System <https://learn.adafruit.com>
