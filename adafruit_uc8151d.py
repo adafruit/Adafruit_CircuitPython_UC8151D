@@ -108,7 +108,6 @@ class UC8151D(displayio.EPaperDisplay):
 
     def __init__(self, bus, **kwargs):
         if kwargs.get("grayscale", False):
-            print("grayscale is true")
             start_sequence = bytearray(_GRAYSCALE_START_SEQUENCE)
         else:
             start_sequence = bytearray(_START_SEQUENCE)
