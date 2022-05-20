@@ -38,9 +38,9 @@ _START_SEQUENCE = (
     b"\x50\x01\x97"  # CDI setting
 )
 
-_GRAYSCALE_START_SEQUENCE  = (
-    b"\x04\x80\xc8" # Power on
-    b"\x00\x01\xbf" # Panel setting
+_GRAYSCALE_START_SEQUENCE = (
+    b"\x04\x80\xc8"  # Power on
+    b"\x00\x01\xbf"  # Panel setting
     b"\x50\x01\x97"  # CDI setting
     # Common voltage
     b"\x20\x2a"
