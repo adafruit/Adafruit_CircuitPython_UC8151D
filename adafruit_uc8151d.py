@@ -108,7 +108,7 @@ class UC8151D(displayio.EPaperDisplay):
           Display rotation
     """
 
-    def __init__(self, bus, **kwargs):
+    def __init__(self, bus: displayio.FourWire, **kwargs) -> None:
         if kwargs.get("grayscale", False):
             start_sequence = bytearray(_GRAYSCALE_START_SEQUENCE)
         else:
