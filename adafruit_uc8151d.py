@@ -17,6 +17,7 @@ Implementation Notes
 **Hardware:**
 
 * `Adafruit Flexible 2.9" Black and White <https://www.adafruit.com/product/4262>`_
+* `Adafruit Tri-Color 2.9" <https://www.adafruit.com/product/1028>`_
 
 **Software and Dependencies:**
 
@@ -33,9 +34,16 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_UC8151D.git"
 _START_SEQUENCE = (
     # b"\x01\x05\x03\x00\x2b\x2b\x09"  # power setting
     # b"\x06\x03\x17\x17\x17"  # booster soft start
-    b"\x04\x80\xc8"  # power on and wait 10 ms
+    b"\x04\x80\xc8"  # power on and wait 200 ms
     b"\x00\x01\x1f"  # panel setting. Further filled in below.
     b"\x50\x01\x97"  # CDI setting
+)
+
+_COLOR_START_SEQUENCE = (
+    b"\x04\x80\xc8"  # power on and wait 200 ms
+    b"\x00\x02\x0f\x89"  # panel setting. Further filled in below.
+    b"\x61\x03\x80\x01\x28"  # Set Display Resolution
+    b"\x50\x01\x77"  # CDI setting
 )
 
 _GRAYSCALE_START_SEQUENCE = (
@@ -89,7 +97,6 @@ _GRAYSCALE_START_SEQUENCE = (
     b"\x00\x00\x00\x00\x00\x00"
 )
 
-
 _STOP_SEQUENCE = b"\x50\x01\xf7" b"\x07\x01\xA5"  # CDI setting  # Deep Sleep
 # pylint: disable=too-few-public-methods
 class UC8151D(displayio.EPaperDisplay):
@@ -109,8 +116,16 @@ class UC8151D(displayio.EPaperDisplay):
     """
 
     def __init__(self, bus: displayio.FourWire, **kwargs) -> None:
+        color_bits_inverted = kwargs.pop("color_bits_inverted", False)
+        write_color_ram_command = 0x10
+        write_black_ram_command = 0x13
         if kwargs.get("grayscale", False):
             start_sequence = bytearray(_GRAYSCALE_START_SEQUENCE)
+        elif kwargs.get("highlight_color", False):
+            write_color_ram_command = 0x13
+            write_black_ram_command = 0x10
+            color_bits_inverted = kwargs.pop("color_bits_inverted", True)
+            start_sequence = bytearray(_COLOR_START_SEQUENCE)
         else:
             start_sequence = bytearray(_START_SEQUENCE)
         width = kwargs["width"]
@@ -126,7 +141,8 @@ class UC8151D(displayio.EPaperDisplay):
             ram_width=128,
             ram_height=296,
             busy_state=False,
-            write_black_ram_command=0x13,
-            write_color_ram_command=0x10,
+            write_black_ram_command=write_black_ram_command,
+            write_color_ram_command=write_color_ram_command,
+            color_bits_inverted=color_bits_inverted,
             refresh_display_command=0x12,
         )

@@ -6,7 +6,7 @@
 
 Supported products:
   * 1.54" Grayscale Display (GDEW0154T8D)
-  """
+"""
 # pylint: disable=no-member
 
 import time
