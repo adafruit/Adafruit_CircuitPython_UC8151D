@@ -98,6 +98,8 @@ _GRAYSCALE_START_SEQUENCE = (
 )
 
 _STOP_SEQUENCE = b"\x50\x01\xf7" b"\x07\x01\xA5"  # CDI setting  # Deep Sleep
+
+
 # pylint: disable=too-few-public-methods
 class UC8151D(displayio.EPaperDisplay):
     r"""UC8151D driver
