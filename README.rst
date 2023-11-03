@@ -100,6 +100,7 @@ Usage Example
     import time
     import board
     import displayio
+    import fourwire
     import adafruit_uc8151d
 
     displayio.release_displays()
@@ -111,7 +112,7 @@ Usage Example
     epd_reset = board.D5
     epd_busy = None
 
-    display_bus = displayio.FourWire(
+    display_bus = fourwire.FourWire(
         spi, command=epd_dc, chip_select=epd_cs, reset=epd_reset, baudrate=1000000
     )
     time.sleep(1)
@@ -127,7 +128,7 @@ Usage Example
         t = displayio.TileGrid(pic, pixel_shader=pic.pixel_shader)
         g.append(t)
 
-        display.show(g)
+        display.root_group = g
 
         display.refresh()
 

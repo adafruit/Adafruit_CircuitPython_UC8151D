@@ -13,6 +13,7 @@ import time
 import board
 import displayio
 import busio
+import fourwire
 import adafruit_uc8151d
 
 displayio.release_displays()
@@ -25,7 +26,7 @@ cs = board.GP9
 rst = board.GP12
 busy = board.GP13
 
-display_bus = displayio.FourWire(
+display_bus = fourwire.FourWire(
     busio.SPI(clk, si), command=dc, chip_select=cs, reset=rst, baudrate=1000000
 )
 
@@ -64,5 +65,5 @@ palette[3] = 0xFFFFFF  # White
 g = displayio.Group()
 t = displayio.TileGrid(bitmap, pixel_shader=palette)
 g.append(t)
-display.show(g)
+display.root_group = g
 display.refresh()
