@@ -26,7 +26,14 @@ Implementation Notes
 
 """
 
-import displayio
+# For 8.x.x and 9.x.x. When 8.x.x is discontinued as a stable release, change this.
+try:
+    from fourwire import FourWire
+    from epaperdisplay import EPaperDisplay
+except ImportError:
+    from displayio import FourWire
+    from displayio import EPaperDisplay
+
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_UC8151D.git"
@@ -101,7 +108,7 @@ _STOP_SEQUENCE = b"\x50\x01\xf7" b"\x07\x01\xA5"  # CDI setting  # Deep Sleep
 
 
 # pylint: disable=too-few-public-methods
-class UC8151D(displayio.EPaperDisplay):
+class UC8151D(EPaperDisplay):
     r"""UC8151D driver
 
     :param bus: The data bus the display is on
@@ -117,7 +124,7 @@ class UC8151D(displayio.EPaperDisplay):
           Display rotation
     """
 
-    def __init__(self, bus: displayio.FourWire, **kwargs) -> None:
+    def __init__(self, bus: FourWire, **kwargs) -> None:
         color_bits_inverted = kwargs.pop("color_bits_inverted", False)
         write_color_ram_command = 0x10
         write_black_ram_command = 0x13
