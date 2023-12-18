@@ -10,8 +10,13 @@ Supported products:
 import time
 import board
 import displayio
-import fourwire
 import adafruit_uc8151d
+
+# For 8.x.x and 9.x.x. When 8.x.x is discontinued as a stable release, change this.
+try:
+    from fourwire import FourWire
+except ImportError:
+    from displayio import FourWire
 
 # Used to ensure the display is free in CircuitPython
 displayio.release_displays()
@@ -25,7 +30,7 @@ epd_reset = board.D5
 epd_busy = board.D6
 
 # Create the displayio connection to the display pins
-display_bus = fourwire.FourWire(
+display_bus = FourWire(
     spi, command=epd_dc, chip_select=epd_cs, reset=epd_reset, baudrate=1000000
 )
 time.sleep(1)  # Wait a bit
