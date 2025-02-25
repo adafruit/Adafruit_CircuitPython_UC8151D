@@ -10,16 +10,13 @@ Supported products:
 # pylint: disable=no-member
 
 import time
-import board
-import displayio
-import busio
-import adafruit_uc8151d
 
-# For 8.x.x and 9.x.x. When 8.x.x is discontinued as a stable release, change this.
-try:
-    from fourwire import FourWire
-except ImportError:
-    from displayio import FourWire
+import board
+import busio
+import displayio
+from fourwire import FourWire
+
+import adafruit_uc8151d
 
 displayio.release_displays()
 
@@ -31,9 +28,7 @@ cs = board.GP9
 rst = board.GP12
 busy = board.GP13
 
-display_bus = FourWire(
-    busio.SPI(clk, si), command=dc, chip_select=cs, reset=rst, baudrate=1000000
-)
+display_bus = FourWire(busio.SPI(clk, si), command=dc, chip_select=cs, reset=rst, baudrate=1000000)
 
 time.sleep(1)
 
