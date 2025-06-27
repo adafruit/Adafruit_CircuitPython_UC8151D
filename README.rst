@@ -123,16 +123,20 @@ Usage Example
 
     g = displayio.Group()
 
-    with open("/display-ruler.bmp", "rb") as f:
-        pic = displayio.OnDiskBitmap(f)
-        t = displayio.TileGrid(pic, pixel_shader=pic.pixel_shader)
-        g.append(t)
+    pic = displayio.OnDiskBitmap("/display-ruler.bmp")
+    t = displayio.TileGrid(pic, pixel_shader=pic.pixel_shader)
+    g.append(t)
 
-        display.root_group = g
+    # Place the display group on the screen
+    display.root_group = g
 
-        display.refresh()
+    # Refresh the display to have it actually show the image
+    # NOTE: Do not refresh eInk displays sooner than 180 seconds
+    display.refresh()
+    print("refreshed")
 
-        time.sleep(120)
+    time.sleep(180)
+
 
 
 Documentation
