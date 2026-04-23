@@ -21,7 +21,7 @@ Introduction
     :target: https://github.com/astral-sh/ruff
     :alt: Code Style: Ruff
 
-CircuitPython `displayio` driver for US8151D-based ePaper displays
+CircuitPython `displayio` driver for UC8151D-based ePaper displays
 
 
 Dependencies
