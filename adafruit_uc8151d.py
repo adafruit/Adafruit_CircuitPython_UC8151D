@@ -105,7 +105,7 @@ _GRAYSCALE_START_SEQUENCE = (
     b"\x00\x00\x00\x00\x00\x00"
 )
 
-_STOP_SEQUENCE = b"\x50\x01\xf7" b"\x07\x01\xa5"  # CDI setting  # Deep Sleep
+_STOP_SEQUENCE = b"\x50\x01\xf7\x07\x01\xa5"  # CDI setting  # Deep Sleep
 
 
 # pylint: disable=too-few-public-methods
